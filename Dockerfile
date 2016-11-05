@@ -21,8 +21,8 @@ COPY ./run.sh /scripts/run.sh
 COPY ./installss.sh /scripts/installss.sh
 COPY ./kcptun.sh /scripts/kcptun.sh
 
-RUN bash installss.sh
-RUN bash kcptun.sh
+RUN bash /scripts/installss.sh
+RUN bash /scripts/kcptun.sh
 RUN chmod a+x /scripts/docker-entrypoint.sh && chmod a+x /scripts/run.sh
 
 
