@@ -1,20 +1,22 @@
 #!/bin/bash
-config_ss() {
+config_ss() 
+{
     if [! -z $SS_PASSWORD ]; then 
-        sed -i 's/_shadowsocks_password_/${SS_PASSWORD}/g' /etc/shadowsocks-libev/config.json; 
+        sed -i 's/_shadowsocks_password_/${SS_PASSWORD}/g' /etc/shadowsocks-libev/config.json 
     fi
     if [! -z $SS_PORT ]; then 
-        sed -i 's/443/${SS_PORT}/g' /etc/shadowsocks-libev/config.json; 
-        sed -i 's/443/${SS_PORT}/g' /usr/share/kcptun/server-config.json; 
+        sed -i 's/443/${SS_PORT}/g' /etc/shadowsocks-libev/config.json 
+        sed -i 's/443/${SS_PORT}/g' /usr/share/kcptun/server-config.json 
     fi
 }
 
-config_kcp() {
+config_kcp() 
+{
     if [! -z $KCP_PASSWORD ]; then 
-        sed -i 's/it's a secrect/${KCP_PASSWORD}/g' /usr/share/kcptun/server-config.json; 
+        sed -i 's/_kcp_password_/${KCP_PASSWORD}/g' /usr/share/kcptun/server-config.json 
     fi
     if [! -z $KCP_PORT ]; then 
-        sed -i 's/5004/${KCP_PORT}/g' /usr/share/kcptun/server-config.json; 
+        sed -i 's/5004/${KCP_PORT}/g' /usr/share/kcptun/server-config.json 
     fi
 }
 
