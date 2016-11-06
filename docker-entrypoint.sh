@@ -1,6 +1,9 @@
 #!/bin/bash
 config_ss() 
 {
+    echo "config shadowsocks"
+    echo "Password: ${SS_PASSWORD}"
+    echo "Port: ${SS_PORT}"
     if [! -z "${SS_PASSWORD}" ]; then 
         sed -i "s/_shadowsocks_password_/${SS_PASSWORD}/g" /etc/shadowsocks-libev/config.json 
     fi
@@ -8,16 +11,21 @@ config_ss()
         sed -i "s/443/${SS_PORT}/g" /etc/shadowsocks-libev/config.json 
         sed -i "s/443/${SS_PORT}/g" /usr/share/kcptun/server-config.json 
     fi
+    cat /etc/shadowsocks-libev/config.json 
 }
 
 config_kcp() 
 {
+    echo "config shadowsocks"
+    echo "Password: ${KCP_PASSWORD}"
+    echo "Port: ${KCP_PORT}"
     if [! -z "${KCP_PASSWORD}" ]; then 
         sed -i "s/_kcp_password_/${KCP_PASSWORD}/g" /usr/share/kcptun/server-config.json 
     fi
     if [! -z "${KCP_PORT}" ]; then 
         sed -i "s/5004/${KCP_PORT}/g" /usr/share/kcptun/server-config.json 
     fi
+    cat /usr/share/kcptun/server-config.json 
 }
 
 set_authorized_keys()
