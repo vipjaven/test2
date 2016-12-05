@@ -1,5 +1,4 @@
 FROM ubuntu:14.04
-LABEL 20161205
 MAINTAINER jn
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
